@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&family=Roboto:wght@100;300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@500&family=Inconsolata:wght@500&family=Roboto:wght@100;300&display=swap");
 .bod{
-  background-color: #666;
+  background-color: #4F4F4F;
   font-family: "Fira Mono", monospace;
   /* font-family: "Roboto", sans-serif; */
   /* font-family: "Inconsolata", monospace; */
@@ -19,4 +19,40 @@
 .styleit{
     margin:10px;
     justify-items: center;
+}
+a{
+    color:#CCCCFF !important;
+}
+a:hover{
+    color:#fff;
+}
+
+footer{
+    margin-top: 50px;
+    padding: 10px;
+    padding-bottom: 1px;
+    margin-bottom: -25px;
+}
+.fixedImg{
+    background-attachment: fixed;
+    background-size: cover;
+    height: 25px;
+}
+.fixedImg1{
+   background-image: url(images/perfume3.jpg);    
+}
+.fixedImg2{
+   background-image: url(images/perfume1.jpg);    
+}
+.fixedImg3{
+   background-image: url(images/perfume2.jpg);    
+}
+.navbar-brand,.navbar{
+    transition: 0.5s;
+}
+.navbar-brand:hover{
+    text-shadow: 10px 10px 20px #fff,-10px -10px -20px #fff;
+}
+.navbar li:hover{
+    padding-left: 10px;
 }

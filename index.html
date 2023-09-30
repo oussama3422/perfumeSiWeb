@@ -12,12 +12,12 @@
 </head>
 
 <body class="bod">
-    
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="background: #232930ee !important;">
         <a class="navbar-brand" href="#" style="border-right:1px solid #aaa;padding-right:10px">
             <img width="50px" style="border-radius: 60%; margin: 0 auto;" src="images/perfume4.jpg" class="navbar-brand"
                 href="#">
-            Parfum
+            Fragrance
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-xpanded="false" aria-label="Toggle navigation">
@@ -30,12 +30,12 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">Buy</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Choose you're Perfume
+                        Perfume type
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Sheap</a>
@@ -43,13 +43,17 @@
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About us</a>
+                </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" style="margin-right: 20px;">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
             </form>
             <form class="form-inline my-2 my-lg-0">
-                <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Login</button>
+                <button class="btn btn-outline-warning my-2 my-sm-0" data-toggle="modal" data-target="#exampleModal"
+                    type="button">Login</button>
             </form>
         </div>
     </nav>
@@ -83,6 +87,8 @@
             </a>
         </div>
         <!-- carousel -->
+
+
         <!-- jabotorn -->
         <div class="jumbotron text-light bg-dark" style="border-top-left-radius: 0px;border-top-right-radius:0px">
             <h1 class="display-4">Weclome</h1>
@@ -106,13 +112,16 @@
                 <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
             </p>
         </div>
+        <div class="fixedImg fixedImg1"></div>
+
         <div class="text-light">
-            <h1 class="text-center">Perfume<span class="badge badge-secondary">❤</span></h1>
+            <h1 class="text-center">Perfume</h1>
         </div>
+
         <!-- jabotorn -->
         <!-- collapse -->
         <div id="accordion text-light bg-dark">
-            <div class="card text-light bg-dark"  style="margin-top:10px">
+            <div class="card text-light bg-dark" style="margin-top:10px">
                 <div class="card-header" id="headingOne">
                     <h5 class="mb-0">
                         <button class="btn btn-outline-light" data-toggle="collapse" data-target="#collapseOne"
@@ -150,12 +159,12 @@
                     </div>
                 </div>
             </div>
-            <div class="card text-light bg-dark"  style="margin-top:10px">
+            <div class="card text-light bg-dark" style="margin-top:10px">
                 <div class="card-header" id="headingTwo">
                     <h5 class="mb-0">
                         <button class="btn btn-outline-light collapsed" data-toggle="collapse"
                             data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Green Perfumes:
+                            Green cologne:
                         </button>
                     </h5>
                 </div>
@@ -193,7 +202,7 @@
                     <h5 class="mb-0">
                         <button class="btn btn-outline-light collapsed" data-toggle="collapse"
                             data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Floral Perfumes:
+                            Floral cologne:
                         </button>
                     </h5>
                 </div>
@@ -210,42 +219,119 @@
                 </div>
             </div>
         </div>
+        <div class="fixedImg fixedImg2"></div>
+
         <!-- collapse -->
 
         <!-- row cards -->
-        <div class="row justify-content-center" style="background-color: #343a4099;padding:20px;border-radius:10px;margin-left:5px;margin-right:5px;margin-top:20px">
-            <div class="card text-light bg-dark" style="width: 18rem; margin-top: 10px; margin-left: 10px;">
-                <img class="card-img-top styleit" src="images/perfume3.jpg" style="border-radius: 50%; margin: 0 auto;">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Perfume 1</h5>
-                    <p class="card-text">The vibrant burst of energy and the sheer joy of Citrus Perfumes.</p>
-                    <a href="#" class="btn btn-primary d-block mx-auto" style="width: 100px;">Buy</a>
+        <div class="row justify-content-around"
+            style="background-color: #343a4099;padding:20px;border-radius:10px;margin-left:5px;margin-right:5px;margin-top:20px">
+            <div class="col-md-4">
+                <div class="card text-light bg-dark" style="width: 100%; margin-top: 10px;">
+                    <img class="card-img-top styleit" src="images/img3.jpg"
+                        style="border-radius: 10%; margin: 0 auto;padding:10px;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">100$</h5>
+                        <p class="card-text">The vibrant burst of energy and the sheer joy of Citrus cologne.</p>
+                        <a href="#" class="btn btn-primary d-block mx-auto" style="width: 100px;">Buy</a>
+                    </div>
                 </div>
             </div>
-
-            <div class="card text-light bg-dark" style="width: 18rem; margin-top: 10px; margin-left: 10px;">
-                <img class="card-img-top styleit" src="images/perfume3.jpg" style="border-radius: 50%; margin: 0 auto;">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Perfume 1</h5>
-                    <p class="card-text">The vibrant burst of energy and the sheer joy of Citrus Perfumes.</p>
-                    <a href="#" class="btn btn-primary d-block mx-auto" style="width: 100px;">Buy</a>
+            <div class="col-md-4">
+                <div class="card text-light bg-dark" style="width: 100%; margin-top: 10px;">
+                    <img class="card-img-top styleit" src="images/perfume3.jpg"
+                        style="border-radius: 10%; margin: 0 auto;padding:10px;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">100$</h5>
+                        <p class="card-text text-light">The vibrant burst of energy and the sheer joy of Citrus cologne.
+                        </p>
+                        <a href="#" class="btn btn-primary d-block mx-auto" style="width: 100px;">Buy</a>
+                    </div>
                 </div>
             </div>
-
-            <div class="card text-light bg-dark" style="width: 18rem; margin-top: 10px; margin-left: 10px;">
-                <img class="card-img-top styleit" src="images/perfume3.jpg" style="border-radius: 50%; margin: 0 auto;">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Perfume 1</h5>
-                    <p class="card-text">The vibrant burst of energy and the sheer joy of Citrus Perfumes.</p>
-                    <a href="#" class="btn btn-primary d-block mx-auto" style="width: 100px;">Buy</a>
-                </div>
-            </div>
-
 
         </div>
+
+        <footer>
+            <div class="fixedImg fixedImg3"></div>
+
+            <div class="container-fluid">
+                <div class="row text-center text-light">
+                    <div class="col-md-4">
+                        <hr class="border-top my-3">
+                        <h5><img width="50px" style="border-radius: 60%; margin:10;" src="images/perfume4.jpg"
+                                class="navbar-brand" href="#">cologne</h5>
+                        <hr class="border-top my-3">
+                        <p><a href="tel:0659158079">tel:+314846484</a> </p>
+                        <p>Address:paris santitein lagossa,France</p>
+                        <p>Fax:+31573924</p>
+                    </div>
+                    <div class="col-md-4">
+                        <hr class="border-top my-3">
+                        <h5><img width="50px" style="border-radius: 60%; margin:10;" src="images/perfume4.jpg"
+                                class="navbar-brand" href="#">Odor</h5>
+                        <hr class="border-top my-3">
+                        <p><a href="address:france">Address:paris santitein lagossa,France</a> </p>
+                        <p>we are waiting for you.</p>
+                        <p>Fax:+31573924</p>
+                    </div>
+                    <div class="col-md-4">
+                        <hr class="border-top my-3">
+                        <h5><img width="50px" style="border-radius: 60%; margin:10;" src="images/perfume4.jpg"
+                                class="navbar-brand" href="#">Perfume</h5>
+                        <hr class="border-top my-3">
+                        <p><a href="mail:ossamachreki2001@gmail.com"> perfumesitefrance@gmail.com</a></p>
+                        <p>Who likes odor ?</p>
+                        <p>Perfum just for you.</p>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center text-light">Copyright &copy; 2023 Perfume site.</div class="text-center text-light">
+            <hr>
+        </footer>
+        <!-- footer -->
     </div>
     <!-- row cards -->
+    <!-- footer -->
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Enter email">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1"
+                                placeholder="Password">
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>

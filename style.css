@@ -9,7 +9,14 @@
 .carousel-inner h1{
   text-shadow: 1px 1px #000;
 }
+.navbar{
+    background: #23293009 !important ;
+}
 /* .carousel-inner img{
   height: 50%;
   width: 50%;
 } */
+.styleit{
+    margin:10px;
+    justify-items: center;
+}

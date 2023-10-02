@@ -1,5 +1,21 @@
-
 {% extends 'base.html' %}
+{%load static%}
 {% block content %}
-<h1>About Page Template </h1>
+<section class="container my-5">
+    <div class="row">
+        <div class="col-lg-6">
+            <h2>About Perfume Paradise</h2>
+            <p>Welcome to Perfume Paradise, your ultimate destination for luxury fragrances. We believe that the right
+                scent can elevate your mood, boost your confidence, and leave a lasting impression. That's why we are
+                committed to providing you with the finest collection of perfumes from around the world.</p>
+            <p>Our team of expert perfumers carefully selects and curates each fragrance in our collection. Whether you
+                prefer a classic, timeless scent or a modern, daring fragrance, we have something for everyone.</p>
+            <p>At Perfume Paradise, we are passionate about helping you discover your signature scent. Explore our range
+                of perfumes, colognes, and fragrances, and embark on a sensory journey like no other.</p>
+        </div>
+        <div class="col-lg-6">
+            <img src="{% static './images/perfume3.jpg' %}" alt="Perfume Bottles" class="img-fluid" style="border-radius: 50%;">
+        </div>
+    </div>
+</section>
 {% endblock %}

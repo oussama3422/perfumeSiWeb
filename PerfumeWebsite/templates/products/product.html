@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<div class="container mt-5">
+    <!-- Product details content goes here -->
+    <h1 class="text-center mb-4">Product Details</h1>
+    <div class="row">
+        <div class="col-lg-6">
+            <img src="{%static 'images/perfume2.jpg'%}" class="img-fluid" alt="Perfume 1">
+        </div>
+        <div class="col-lg-6">
+            <h2>Perfume Name 1</h2>
+            <p>Description of Perfume 1. Lorem ipsum dolor sit amet.</p>
+            <p>Price: $50.00</p>
+            <!-- Add more product details here -->
+            <a href="#" class="btn btn-primary">Add to Cart</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

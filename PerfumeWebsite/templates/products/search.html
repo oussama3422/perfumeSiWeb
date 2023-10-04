@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{%load static%}
+{% block content %}
+<div class="container mt-5">
+    <div class="d-flex justify-content-center"> <!-- Center the container horizontally -->
+        <div style="width: 500px;"> <!-- Set the width to 200px -->
+            <h1 class="text-center">Product Search</h1>
+            <form action="/search/" method="GET">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search for Name products..." name="q">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search for Description products..." name="desc">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="number" class="form-control" placeholder="From Price" name="min_price">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="number" class="form-control" placeholder="To Price" name="max_price">
+                </div>
+                <div class="input-group-append">
+                    <button class="btn btn-warning" type="submit">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{%endblock%}

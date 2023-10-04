@@ -1,16 +1,16 @@
 {% extends 'base.html'%}
-{%bloc content%}
+{%block content%}
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h2 class="mb-4">Sign Up</h2>
+            <h2 class="mb-4">Perfume Website Sign Up</h2>
             <form>
                 <div class="mb-3">
                     <label for="fullName" class="form-label">Full Name</label>
                     <input type="text" class="form-control" id="fullName" placeholder="Enter your full name">
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email address</label>
+                    <label for="email" class="form-label">Email Address</label>
                     <input type="email" class="form-control" id="email" placeholder="Enter your email">
                 </div>
                 <div class="mb-3">
@@ -19,9 +19,8 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Sign Up</button>
             </form>
-            <p class="mt-3">Already have an account? <a href="signin.html">Sign In</a></p>
+            <p class="mt-3">Already have an account? <a href="signin">Sign In</a></p>
         </div>
     </div>
 </div>
-
 {%endblock%}

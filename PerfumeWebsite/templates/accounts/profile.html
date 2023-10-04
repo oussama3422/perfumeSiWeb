@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2 class="mb-4">User Profile</h2>
+            <div class="mb-3">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullName" value="John Doe" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" value="johndoe@example.com" disabled>
+            </div>
+            <!-- Add more profile information fields as needed -->
+            <a href="#" class="btn btn-primary">Edit Profile</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

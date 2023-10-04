@@ -1,7 +1,5 @@
 {% extends 'base.html'%}
-
-
-{%bloc content%}
+{% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -17,9 +15,9 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Sign In</button>
             </form>
-            <p class="mt-3">Don't have an account? <a href="signup.html">Sign Up</a></p>
+            <p class="mt-3">Don't have an account? <a href="signup">Sign Up</a></p>
         </div>
     </div>
 </div>
 
-{%endblock%}
+{% endblock %}

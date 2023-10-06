@@ -2,11 +2,11 @@
 {%load static%}
 {% block content %}
 <!-- Perfume Benefits Section -->
+
 <section class="container my-5 text-center">
-    <div class="col-lg-6">
-            <div class="col-lg-6">
-                <img src="{% static './images/perfume3.jpg' %}" alt="Perfume Bottles" class="img-fluid" style="border-radius: 80%;padding:10px;margin:10px;">
-            </div>
+    <div class="row justify-content-center"> <!-- Center the content horizontally -->
+        <div class="col-lg-6">
+            <img src="{% static './images/perfume3.jpg' %}" alt="Perfume Bottles" class="img-fluid rounded-circle" style="max-width: 200px; padding: 10px; margin: 10px;">
             <h2>Why Use Perfume?</h2>
             <p>Perfume is more than just a pleasant fragrance; it offers a range of benefits that can enhance your overall well-being and leave a lasting impression. Here are some compelling reasons to use perfume:</p>
             <ul>
@@ -22,6 +22,7 @@
                 <li><strong>Tradition and Culture:</strong> Perfume has a rich history and is an integral part of many traditions and cultures worldwide. It can connect you to heritage and tradition.</li>
             </ul>
         </div>
+    </div>
 </section>
 
 {%endblock%}

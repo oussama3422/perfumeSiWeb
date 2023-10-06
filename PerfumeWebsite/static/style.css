@@ -6,12 +6,23 @@
   /* font-family: "Roboto", sans-serif; */
   /* font-family: "Inconsolata", monospace; */
 }
+.product-image {
+    width: 200px;
+    /* Set the desired width */
+    height: 200px;
+    /* Set the desired height */
+    object-fit:contain;
+    /* Maintain aspect ratio and cover the container */
+}
 .carousel-inner h1{
   text-shadow: 1px 1px #000;
 }
 .navbar{
     background: #23293009 !important ;
     /* flex: auto; */
+}
+.navbar .nav-item.active {
+    background-color: #ADD8E6; /* Light blue background color */
 }
 /* .carousel-inner img{
   height: 50%;

@@ -164,36 +164,23 @@
         </div>
     </div>
     <div class="fixedImg fixedImg2"></div>
-
     <!-- collapse -->
 
-    <!-- row cards -->
-    <div class="row justify-content-around"
-        style="background-color: #343a4099;padding:20px;border-radius:10px;margin-left:5px;margin-right:5px;margin-top:20px">
-        <div class="col-md-4">
-            <div class="card text-light bg-dark" style="width: 100%; margin-top: 10px;">
-                <img class="card-img-top styleit" src="{% static 'images/img3.jpg' %}"
-                    style="border-radius: 10%; margin: 0 auto;padding:10px;">
-                <div class="card-body text-center">
-                    <h5 class="card-title">100$</h5>
-                    <p class="card-text">The vibrant burst of energy and the sheer joy of Citrus cologne.</p>
-                    <a href="#" class="btn btn-primary d-block mx-auto" style="width: 100px;">Buy</a>
+    <div class="row justify-content-around" style="background-color: #343a4099;padding:20px;border-radius:10px;margin-left:5px;margin-right:5px;margin-top:20px">
+       <h1>Lastest Product</h1>     
+       {% for pro in products|slice:':2' %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <img src="{{pro.photo.url}}" class="card-img-top product-image" alt="Perfume 1">
+                <div class="card-body">
+                    <h5 class="card-title">{{pro.name}}</h5>
+                    <p class="card-text">{{pro.desc}}</p>
+                    <p class="card-text">Price:{{pro.price}}</p>
+                    <a href="{% url 'product' prod_id=pro.id%}" class="btn btn-primary">Show details</a>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card text-light bg-dark" style="width: 100%; margin-top: 10px;">
-                <img class="card-img-top styleit" src="{% static 'images/perfume3.jpg' %}"
-                    style="border-radius: 10%; margin: 0 auto;padding:10px;">
-                <div class="card-body text-center">
-                    <h5 class="card-title">100$</h5>
-                    <p class="card-text text-light">The vibrant burst of energy and the sheer joy of Citrus cologne.
-                    </p>
-                    <a href="#" class="btn btn-primary d-block mx-auto" style="width: 100px;">Buy</a>
-                </div>
-            </div>
-        </div>
-
+        {%endfor%}
     </div>
  
 </div>

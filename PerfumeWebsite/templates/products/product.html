@@ -1,19 +1,52 @@
 {% extends 'base.html' %}
-{%load static%}
+{% load static %}
 {% block content %}
 <div class="container mt-5">
-    <!-- Product details content goes here -->
-    <h1 class="text-center mb-4">Product Details</h1>
-    <div class="row">
-        <div class="col-lg-6">
-            <img src="{%static 'images/perfume2.jpg'%}" class="img-fluid" alt="Perfume 1">
-        </div>
-        <div class="col-lg-6">
-            <h2>Perfume Name 1</h2>
-            <p>Description of Perfume 1. Lorem ipsum dolor sit amet.</p>
-            <p>Price: $50.00</p>
-            <!-- Add more product details here -->
-            <a href="#" class="btn btn-primary">Add to Cart</a>
+    <h1 class="text-center mb-4">Perfume Product Details</h1>
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <img src="{{ pro.photo.url }}" class="card-img-top product-image" alt="Perfume 1">
+                        </div>
+                        <div class="col-lg-8 col-md-6">
+                            <h5 class="card-title">{{ pro.name }}</h5>
+                            <p class="card-text">{{ pro.desc }}</p>
+                            <p class="card-text">Price: {{ pro.price }}</p>
+
+                            <div class="input-group">
+                                <input type="number" class="form-control" value="1" min="1" step="1"
+                                    id="quantity{{ pro.id }}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary">Add to Cart</button>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex align-items-center">
+                                <a href="{% url 'products' %}" class="btn btn-warning">products</a>
+                                <a href="{% url 'index' %}">
+                                <svg width="64px" height="64px" viewBox="-18.48 -18.48 60.96 60.96" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg" transform="rotate(0)" stroke="#ead2d2">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke="#CCCCCC" stroke-width="0.72"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path opacity="0.5"
+                                            d="M2 12.2039C2 9.91549 2 8.77128 2.5192 7.82274C3.0384 6.87421 3.98695 6.28551 5.88403 5.10813L7.88403 3.86687C9.88939 2.62229 10.8921 2 12 2C13.1079 2 14.1106 2.62229 16.116 3.86687L18.116 5.10812C20.0131 6.28551 20.9616 6.87421 21.4808 7.82274C22 8.77128 22 9.91549 22 12.2039V13.725C22 17.6258 22 19.5763 20.8284 20.7881C19.6569 22 17.7712 22 14 22H10C6.22876 22 4.34315 22 3.17157 20.7881C2 19.5763 2 17.6258 2 13.725V12.2039Z"
+                                            stroke="#f9db15" stroke-width="2.4"></path>
+                                        <path d="M15 18H9" stroke="#f9db15" stroke-width="2.4" stroke-linecap="round">
+                                        </path>
+                                    </g>
+                                </svg>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </div>

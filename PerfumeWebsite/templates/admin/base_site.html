@@ -1,0 +1,15 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+{% block branding %}
+  
+<h1 id="head">
+    <img width="50px" style="border-radius: 60%; margin: 0 auto;" src="{% static 'images/perfume4.jpg' %}"
+    class="navbar-brand" href="#">
+    My Perfume Administration
+</h1>
+
+{%endblock%}
+
+{%block extrastyle%}
+<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{%endblock%}

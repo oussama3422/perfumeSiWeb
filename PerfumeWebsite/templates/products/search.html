@@ -5,7 +5,7 @@
     <div class="d-flex justify-content-center"> <!-- Center the container horizontally -->
         <div style="width: 500px;"> <!-- Set the width to 200px -->
             <h1 class="text-center">Product Search</h1>
-            <form action="/search/" method="GET">
+            <form action="{% url 'products' %}" method="GET">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Search for Name products..." name="q">
                 </div>
@@ -18,7 +18,21 @@
                 <div class="input-group mb-3">
                     <input type="number" class="form-control" placeholder="To Price" name="max_price">
                 </div>
-                <div class="input-group-append">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="caseSensitiveCheckbox" name="checkbox">
+                            <label class="form-check-label" for="caseSensitiveCheckbox">
+                                Case Sensitive
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <!-- Add your other filter options here -->
+                    </div>
+                </div>
+                <br>
+                <div class="input-group-append " style="margin-bottom: 10px;width:50%;">
                     <button class="btn btn-warning" type="submit">Search</button>
                 </div>
             </form>

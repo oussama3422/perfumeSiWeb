@@ -1,4 +1,13 @@
 {% load static%}
+<style>
+    /* Custom CSS for the active nav-item */
+    .navbar .nav-item.active {
+        border-radius: 50%;
+        color:white;
+        background-color: #ADD8E6; /* Light blue background color */
+    }
+    
+</style>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top" style="background: #232930ee !important;">
     <a class="navbar-brand" href="{%url 'index'%}" style="border-right:1px solid #aaa;padding-right:10px">
         <img width="50px" style="border-radius: 60%; margin: 0 auto;" src="{% static 'images/perfume4.jpg' %}"
@@ -12,32 +21,67 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li {% if '/' == request.path %} class="nav-item active" {% else %} class="nav-item" {% endif %}>
                 <a class="nav-link" href="{% url 'index'%}">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item nav-perfume">
-                <a class="nav-link" href="{% url 'profile'%}">Profile</a>
+            <li 
+            {% if 'signin' in request.path or 'signup' in request.path or  'profile' in request.path %}
+            class="nav-item dropdown active"
+            {% else %}
+            class="nav-item dropdown"
+            {% endif %}
+
+            >
+                <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Join Us
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'signin'%}">SignIn</a>
+                    <a class="dropdown-item" href="{% url 'signup'%}">SignUp</a>
+                    <a class="dropdown-item" href="{% url 'profile'%}">Profile</a>
+                    <div class="dropdown-divider"></div>
+                </div>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{% url 'products'%}" id="navbarDropdown" role="button"
+            <li {% if 'perfume' in  request.path%} class="nav-item active" {% else %} class="nav-item" {% endif %}>
+                <a class="nav-link" href="{% url 'perfume' %}">Perfume</a>
+            </li>
+            <li 
+           
+            class="nav-item dropdown"
+            >
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Products
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'products'%}">All Product</a>
-                    <a class="dropdown-item" href="{% url 'search'%}">Filter</a>
+                    <a class="dropdown-item" href="{% url 'products'%}">All Products</a>
+                    <a class="dropdown-item" href="{% url 'product'  prod_id=2%}">Oil</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
-            <li class="nav-item">
+            <li {% if 'about' in  request.path%} class="nav-item active" {% else %} class="nav-item" {% endif %}>
                 <a class="nav-link" href="{% url 'about' %}">About us</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" style="margin-right: 20px;">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <a href="{% url 'signin' %}" class="btn btn-outline-warning my-2 my-sm-0" data-toggle="modal"
-            data-target="#exampleModal" type="button">Login</a>
+        
+        <!-- <form class="form-inline my-2 my-lg-0" style="margin-right: 20px;"> -->
+            <!-- <a href="{% url 'search' %}" class="btn btn-outline-info my-2 my-sm-0">Search</a> -->
+            <form action="{% url 'products' %}" class="form-inline my-2 my-lg-0" style="margin-right: 20px;">
+                <div class="input-group">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="q">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-info" type="submit">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.742 9.742a6.5 6.5 0 1 0-1.48 1.48l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a6.5 6.5 0 0 0-1.48-1.48z"/>
+                            </svg>
+                        </button>
+                        <a href="{% url 'search' %}" class="btn btn-warning ml-2 mr-2" type="submit">Advanced Search</a>
+                    </div>
+                </div>
+            </form>
+            
+        <!-- </form> -->
+        <a href="{% url 'signin' %}" class="btn btn-outline-warning my-2 my-sm-0">Login</a>
     </div>
 </nav>

@@ -1,48 +1,35 @@
 {% extends 'base.html' %}
 {%load static%}
 {% block content %}
+<!-- <style>
+    .product-image {
+        width: 200px;
+        /* Set the desired width */
+        height: 200px;
+        /* Set the desired height */
+        object-fit:contain;
+        /* Maintain aspect ratio and cover the container */
+    }
+</style> -->
+
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Perfume Products</h1>
+    <h1 class="text-center mb-4">
+        Perfume Products
+    </h1>
     <div class="row">
-        <!-- Product 1 -->
+        {%for pro in products%}
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card">
-                <img src="{%static 'images/perfume4.jpg'%}" class="card-img-top" alt="Perfume 1">
+                <img src="{{pro.photo.url}}" class="card-img-top product-image" alt="Perfume 1">
                 <div class="card-body">
-                    <h5 class="card-title">Perfume Name 1</h5>
-                    <p class="card-text">Description of Perfume 1. Lorem ipsum dolor sit amet.</p>
-                    <p class="card-text">Price: $50.00</p>
-                    <a href="#" class="btn btn-primary">Add to Cart</a>
+                    <h5 class="card-title">{{pro.name}}</h5>
+                    <p class="card-text">{{pro.desc}}</p>
+                    <p class="card-text">Price:{{pro.price}}</p>
+                    <a href="{% url 'product' prod_id=pro.id%}" class="btn btn-primary">Show details</a>
                 </div>
             </div>
         </div>
-
-        <!-- Product 2 -->
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
-                <img src="{%static 'images/perfume2.jpg'%}" class="card-img-top" alt="Perfume 2">
-                <div class="card-body">
-                    <h5 class="card-title">Perfume Name 2</h5>
-                    <p class="card-text">Description of Perfume 2. Lorem ipsum dolor sit amet.</p>
-                    <p class="card-text">Price: $45.00</p>
-                    <a href="#" class="btn btn-primary">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-        <!-- Product 3 -->
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card">
-                <img src="{%static 'images/perfume1.jpg'%}" class="card-img-top" alt="Perfume 2">
-                <div class="card-body">
-                    <h5 class="card-title">Perfume Name 3</h5>
-                    <p class="card-text">Description of Perfume 3. Lorem ipsum dolor sit amet.</p>
-                    <p class="card-text">Price: $70.00</p>
-                    <a href="#" class="btn btn-primary">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Add more product cards as needed -->
+        {%endfor%}
     </div>
 </div>
 {%endblock%}

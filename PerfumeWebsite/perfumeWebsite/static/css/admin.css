@@ -1,0 +1,67 @@
+#header{
+    background: #232930ee !important;
+    color:#fff
+}
+
+body{
+    background: #191d21ee !important;
+    color:#fff
+}
+
+#head{
+    color:#fff !important;
+}
+
+.module h2, .module caption, .inline-group h2,div.breadcrumbs,.selector-chosen h2{
+    background: #232930ee !important;
+    color:#fff !important;
+}
+/* .submit-row {
+    padding: 12px 14px 12px;
+    margin: 0 0 20px;
+    background: #232930ee !important;
+    border: 1px solid var(--hairline-color);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; */
+/* } */
+.button,
+input[type=submit],
+input[type=button],
+.button,
+input[type=submit],
+input[type=button],
+.button:hover,
+input[type=submit],
+input[type=button],
+button.default,
+input[type=submit].default,
+button.default,
+input[type=submit].default,
+button.default,
+input[type=submit].default{
+    background: #232930ee !important;
+    color:#fff;
+}
+.button:active,
+input[type=submit]:active,
+input[type=button]:active,
+.button:focus,
+input[type=submit]:focus,
+input[type=button]:focus,
+.button:hover,
+input[type=submit]:hover,
+input[type=button]:hover,
+button.default:active,
+input[type=submit].default:active,
+button.default:focus,
+input[type=submit].default:focus,
+button.default:hover,
+input[type=submit].default:hover{
+    background: #30363dee !important;
+}
+
+
+

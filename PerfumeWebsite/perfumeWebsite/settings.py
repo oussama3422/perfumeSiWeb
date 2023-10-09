@@ -140,6 +140,15 @@ MEDIA_ROOT = BASE_DIR /'media'
 MEDIA_URL = 'media/'
 
 
+
+# Custom messages
+from django.contrib.messages import constants as messages
+
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+}
+
+
 # f=open('test.txt','w')
 # f.write(BASE_DIR)
 # f.close()

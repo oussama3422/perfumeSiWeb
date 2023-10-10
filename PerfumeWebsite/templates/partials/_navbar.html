@@ -2,7 +2,6 @@
 <style>
     /* Custom CSS for the active nav-item */
     .navbar .nav-item.active {
-        border-radius: 50%;
         color:white;
         background-color: #1d095d; /* Light blue background color */
     }
@@ -34,7 +33,11 @@
             >
                 <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {%if request.user.is_authenticated%}
+                    Welcome
+                    {%else%}
                     Join Us
+                    {%endif%}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{% url 'signin'%}">SignIn</a>
@@ -64,10 +67,8 @@
                 <a class="nav-link" href="{% url 'about' %}">About us</a>
             </li>
         </ul>
-        
-        <!-- <form class="form-inline my-2 my-lg-0" style="margin-right: 20px;"> -->
-            <!-- <a href="{% url 'search' %}" class="btn btn-outline-info my-2 my-sm-0">Search</a> -->
-            <form action="{% url 'products' %}" class="form-inline my-2 my-lg-0" style="margin-right: 20px;">
+          
+            <form action="{% url 'products' %}" class="form-inline my-2 my-lg-0">
                 <div class="input-group">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search" name="q">
                     <div class="input-group-append">
@@ -80,8 +81,10 @@
                     </div>
                 </div>
             </form>
-            
-        <!-- </form> -->
-        <a href="{% url 'signin' %}" class="btn btn-outline-warning my-2 my-sm-0">Login</a>
+            <!-- {%if request.user.is_authenticated%}
+            <span class="text-light ml-5">
+             Welcome , {{request.user.username}}
+            </span>
+            {%endif%} -->
     </div>
 </nav>

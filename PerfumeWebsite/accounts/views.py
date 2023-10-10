@@ -9,18 +9,15 @@ import re
 
 def signin(request):
     if request.method == 'POST' and 'signin_button' in request.POST:
-        
-        email=request.POST['email']
+        username=request.POST['fullname']
         password=request.POST['pass']
-        user=auth.authenticate(email=email,password=password)
+        user=auth.authenticate(username=username,password=password)
+        print('user',user)
         if user is not None:
             auth.login(request,user)
             messages.success(request,'You are logged in successfully')
         else:
-            pass
-
-
-
+            messages.error(request,'You Password or Email is not valid')
         return redirect('signin')
     else:    
         return render(request,'accounts/signin.html')

@@ -5,24 +5,37 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <h2 class="mb-4">User Profile</h2>
-            {%include 'partials/_alerts.html'%}
+            {%if request.user.is_authenticated%}
             <form method="post">
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="fullName" name="fullName">
+                    <input type="text" class="form-control" id="fullName" name="fullName" value="{{fullname}}">
                 </div>
                 <div class="mb-3">
                     <label for="number" class="form-label">Phone Number</label>
-                    <input type="number" class="form-control" id="phone" name="phone Number" placeholder="Enter your phone Number" required>
+                    <input type="tel" class="form-control" id="phone" name="phoneNumber" value="{{phonenumber}}"
+                        required>
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email Address</label>
-                    <input type="email" name="email" class="form-control" id="email">
+                    <input type="email" name="email" class="form-control" id="email" value="{{email}}">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" name="password" class="form-control" id="email" value="{{password}}">
                 </div>
                 <button type="submit" name="buttonchange" class="btn btn-primary">Save changes</button>
         </div>
         </form>
+        {%else%}
+        <h3 class="alert alert-danger">
+            You must be 
+            <a href="{%url 'signin'%}" class="text-dark">
+                logged In.
+            </a>
+        </h3>
+        {%endif%}
     </div>
 </div>
 {% endblock %}

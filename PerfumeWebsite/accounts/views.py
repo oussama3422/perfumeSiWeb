@@ -91,10 +91,25 @@ def signup(request):
         return render(request,'accounts/signup.html',context)
     else:    
         return render(request,'accounts/signup.html')
+    
+
+
 def profile(request):
     if request.method == 'POST' and 'buttonchange' in request.POST:
-        messages.info(request,'This is Post Method')
-        messages.success(request,'saved successfully')
         return redirect('profile')
     else:
-        return render(request,'accounts/profile.html')
+        if request.user is not None:
+            context=None
+            # if not request.user.id != None:
+            if not request.user.is_anonymous:
+                userprofile=UserProfile.objects.get(user=request.user)
+                context={
+                    'fullname':request.user.username,
+                    'email':request.user.email,
+                    'phonenumber':userprofile.phoneNum,
+                    'password':request.user.password,
+                }
+            return render(request,'accounts/profile.html',context)
+        else:
+            return redirect('profile')
+

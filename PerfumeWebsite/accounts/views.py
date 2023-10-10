@@ -6,7 +6,10 @@ from .models import UserProfile
 import re
 # Create your views here.
 
-
+def logout(request):
+    if request.user.is_authenticated:
+        auth.logout(request)
+    return redirect('index')
 def signin(request):
     if request.method == 'POST' and 'signin_button' in request.POST:
         username=request.POST['fullname']
@@ -14,6 +17,8 @@ def signin(request):
         user=auth.authenticate(username=username,password=password)
         print('user',user)
         if user is not None:
+            if 'rememberme' not in request.POST:
+                request.session.set_expiry(0)  # Session will expire when the user's browser is closed
             auth.login(request,user)
             messages.success(request,'You are logged in successfully')
         else:

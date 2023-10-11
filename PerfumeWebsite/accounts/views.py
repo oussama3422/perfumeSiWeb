@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib import auth
 from .models import UserProfile
+from products.models import Product
 import re
 # Create your views here.
 
@@ -96,6 +97,22 @@ def signup(request):
 
 def profile(request):
     if request.method == 'POST' and 'buttonchange' in request.POST:
+        if request.user is not None and request.user.id !=None:
+            userprofile=UserProfile.objects.get(user=request.user)
+            if request.POST['fullname'] and request.POST['email'] and request.POST['password'] and request.POST['phoneNumber']:
+                request.user.username=request.POST['fullname']
+                userprofile.phoneNum=request.POST['phoneNumber']
+                # request.user.email=request.POST['email']
+                if not request.POST['password'].startswith('pbkdf2_sha256$'):
+                    request.user.set_password(request.POST['password'])
+                    request.user.save()
+                    userprofile.save()
+                    auth.login(request,request.user)
+                    messages.success(request,'Your data has been saved successfully')
+                else:
+                    request.user.password = request.POST['password']
+            else:
+                messages.error(request,'Check your value and element.')
         return redirect('profile')
     else:
         if request.user is not None:
@@ -113,3 +130,15 @@ def profile(request):
         else:
             return redirect('profile')
 
+
+
+def favorite_product(request,prod_id):
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        fav_prod = Product.objects.get(pk=prod_id)
+        if UserProfile.objects.filter(user=request.user,product_favorites=fav_prod).exists():
+            messages.info(request,'Product has been Unfavorited')
+        else:
+            userprofile=UserProfile.objects.get(user=request.user)
+            userprofile.product_favorites.add(fav_prod)
+            messages.info(request,'Product has been favorited')
+        return redirect('/products/'+str(prod_id))

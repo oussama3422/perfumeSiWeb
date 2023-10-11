@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 
+
+{%block title%}Profile{%endblock%}
+
 {% block content%}
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -10,7 +13,7 @@
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="fullName" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="fullName" name="fullName" value="{{fullname}}">
+                    <input type="text" class="form-control" id="fullName" name="fullname" value="{{fullname}}">
                 </div>
                 <div class="mb-3">
                     <label for="number" class="form-label">Phone Number</label>

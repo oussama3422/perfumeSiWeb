@@ -132,13 +132,28 @@ def profile(request):
 
 
 
-def favorite_product(request,prod_id):
+def favorite_product(request,pro_id):
     if request.user.is_authenticated and not request.user.is_anonymous:
-        fav_prod = Product.objects.get(pk=prod_id)
+        fav_prod = Product.objects.get(pk=pro_id)
         if UserProfile.objects.filter(user=request.user,product_favorites=fav_prod).exists():
-            messages.info(request,'Product has been Unfavorited')
+            messages.warning(request,'Product has been Unfavorited')
         else:
             userprofile=UserProfile.objects.get(user=request.user)
             userprofile.product_favorites.add(fav_prod)
-            messages.info(request,'Product has been favorited')
-        return redirect('/products/'+str(prod_id))
+            messages.success(request,'Product has been favorited')
+        return redirect('/products/' +str(pro_id))
+    else:
+            messages.error(request,'You must be logged in.')
+        
+    return redirect('index')
+
+
+def show_products_favorite(request):
+    context=None
+    if request.user.is_authenticated and not request.user.is_anonymous:
+        userInfo=UserProfile.objects.get(user=request.user)
+        prod=userInfo.product_favorites.all()
+        context={
+            'products':prod,
+        }
+    return render(request,'products/products.html',context)

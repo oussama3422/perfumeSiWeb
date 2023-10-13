@@ -29,6 +29,15 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="{% static './js/bootstrap.min.js' %}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#cardModel').on('shown.bs.modal',function (){
+                $(this).find('#inputQty').focus();
+                $(this).find('#inputQty').select();
+            })
+        })
+    </script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="container mt-5">
-    <form>
+    <form id="frm_add_to_cart" action="{% url 'add_to_cart' %}">
     <h1 class="text-center mb-4">Perfume Product Details</h1>
     <div class="row justify-content-center">
         {%include 'partials/_alerts.html'%}
@@ -54,12 +54,16 @@
                                         </div>
                                         <div class="modal-body">
                                             <label for="inputQty">Quantity</label>
-                                            <input type="text" class="form-control" id="inputQty" required value="1">
+                                            <input type="text" class="form-control" id="inputQty" required value="1" name="Qty">
+                                            <input type="hidden" name="pro_id" value="{{pro.id}}">
+                                            <input type="hidden" name="price" value="{{pro.price}}">
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
-                                            <button class="btn btn-warning">Confirm</button>
+                                                data-bs-dismiss="modal" id="btnclose">Close</button>
+                                            <button onClick="add_to_cart()" class="btn btn-warning" >
+                                                Confirm
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -93,5 +97,13 @@
         </div>
     </div>
 </form>
+
+<script>
+    function add_to_cart(){
+        document.getElementById('btnclose').click()
+        document.getElementById('frm_add_to_cart').submit()
+        
+    }
+</script>
 </div>
 {% endblock %}

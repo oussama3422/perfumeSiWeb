@@ -8,17 +8,57 @@
 
 
 <div class="container  p-5 my-5  border rounded border-warning">
+    {%include 'partials/_alerts.html'%}
     <h2 class="text-center">Cart</h2>
     <hr>
-    
     {% if order %}
     <h5>
         FullName : {{order.user.username}}
+        <hr class="text-warning">
+        Order Price : {{orderdetails.price}}
+        Order Quantity : {{orderdetails.quantity}}
+        <!-- Order Number : {{order.}} -->
         Order Number : {{order.id}} with total :{{total}}$
     </h5>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product</th>
+                <th scope="col">Image</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Change quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Subtotal</th>
+                <th scope="col">Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for line in orderdetails%}
+            <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{line.product.name}}</td>
+                <td><img src="{{line.product.photo.url}}" alt="" style="width: 70px;height:70px"></td>
+                <td>{{line.quantity}}</td>
+                <td>
+                    <a href="" class="btn btn-outline-warning btn-sm"> - </a>
+                    <a href="" class="btn btn-outline-warning btn-sm"> + </a>
+                </td>
+                <td>{{line.price}}$</td>
+                <td style="font-weight: w800;color:darkred">{%widthratio line.quantity 1 line.price %}$</td>
+                <td><a class="btn btn-outline-danger btn-sm" href="{% url 'remove_from_card' orderdetails_id=line.id %}">Remove</a></td>
+            </tr>
+            {%empty%}
+            <h5 class="alert alert-warning">No details here</h5>
+            {%endfor%}
+        </tbody>
+    </table>
     <hr>
     {% else %}
-    <h5 class="h2 alert alert-warning">No orders exists</h5>
+    <h4 class="alert alert-warning">No Orders here <a href="{% url 'products' %}" class="text-dark">All products</a>
+    </h4>
+
+    <!-- <h5 class="h2 alert alert-warning">No orders exists </h5> -->
     {%endif%}
 
     <hr>
@@ -26,4 +66,4 @@
 
 
 
-{% endblock %}
+    {% endblock %}

@@ -56,3 +56,11 @@ def order(request):
      
     
     return render(request,'orders/cart.html',context)
+
+
+def remove_from_card(request,orderdetails_id):
+    if request.user.is_authenticated and not request.user.is_anonymous and orderdetails_id:
+        orderdetails=OrderDetails.objects.get(id=orderdetails_id)
+        orderdetails.delete()
+        messages.success(request,'The item'+ orderdetails.product.name +'has been deleted Successfully')
+    return redirect('cart')

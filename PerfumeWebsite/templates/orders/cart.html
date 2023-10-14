@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static%}
+
+
+{% block title %} Cart {% endblock %}
+
+{% block content %}
+
+
+<div class="container  p-5 my-5  border rounded border-warning">
+    <h2 class="text-center">Cart</h2>
+    <hr>
+    
+    {% if order %}
+    <h5>
+        FullName : {{order.user.username}}
+        Order Number : {{order.id}} with total :{{total}}$
+    </h5>
+    <hr>
+    {% else %}
+    <h5 class="h2 alert alert-warning">No orders exists</h5>
+    {%endif%}
+
+    <hr>
+    <div />
+
+
+
+{% endblock %}

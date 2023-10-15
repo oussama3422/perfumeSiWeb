@@ -12,14 +12,6 @@
     <h2 class="text-center">Cart</h2>
     <hr>
     {% if order %}
-    <h5>
-        FullName : {{order.user.username}}
-        <hr class="text-warning">
-        Order Price : {{orderdetails.price}}
-        Order Quantity : {{orderdetails.quantity}}
-        <!-- Order Number : {{order.}} -->
-        Order Number : {{order.id}} with total :{{total}}$
-    </h5>
     <table class="table table-hover table-dark">
         <thead>
             <tr>
@@ -27,7 +19,6 @@
                 <th scope="col">Product</th>
                 <th scope="col">Image</th>
                 <th scope="col">Quantity</th>
-                <th scope="col">Change quantity</th>
                 <th scope="col">Price</th>
                 <th scope="col">Subtotal</th>
                 <th scope="col">Control</th>
@@ -39,14 +30,29 @@
                 <th scope="row">{{forloop.counter}}</th>
                 <td>{{line.product.name}}</td>
                 <td><img src="{{line.product.photo.url}}" alt="" style="width: 70px;height:70px"></td>
-                <td>{{line.quantity}}</td>
                 <td>
-                    <a href="" class="btn btn-outline-warning btn-sm"> - </a>
-                    <a href="" class="btn btn-outline-warning btn-sm"> + </a>
+                     <a href="{% url 'minus_qty' orderdetails_id=line.id %}" class="btn btn-outline-warning btn-sm text-light">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                            class="bi bi-dash-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                            <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
+                        </svg>
+                    </a>
+                    {{line.quantity}}
+                     <a href="{% url 'add_qty' orderdetails_id=line.id %}" class="btn btn-outline-warning btn-sm text-light">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" 
+                            class="bi bi-plus-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                            <path
+                                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                        </svg>
+                    </a>
                 </td>
+               
                 <td>{{line.price}}$</td>
                 <td style="font-weight: w800;color:darkred">{%widthratio line.quantity 1 line.price %}$</td>
-                <td><a class="btn btn-outline-danger btn-sm" href="{% url 'remove_from_card' orderdetails_id=line.id %}">Remove</a></td>
+                <td><a class="btn btn-outline-danger btn-sm"
+                        href="{% url 'remove_from_card' orderdetails_id=line.id %}">Remove</a></td>
             </tr>
             {%empty%}
             <h5 class="alert alert-warning">No details here</h5>

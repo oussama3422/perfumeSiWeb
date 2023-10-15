@@ -58,9 +58,31 @@ def order(request):
     return render(request,'orders/cart.html',context)
 
 
+
+
 def remove_from_card(request,orderdetails_id):
     if request.user.is_authenticated and not request.user.is_anonymous and orderdetails_id:
         orderdetails=OrderDetails.objects.get(id=orderdetails_id)
         orderdetails.delete()
         messages.success(request,'The item'+ orderdetails.product.name +'has been deleted Successfully')
     return redirect('cart')
+
+
+# increase the quantity function
+
+def add_quantity(request,orderdetails_id):
+    if request.user.is_authenticated and not request.user.is_anonymous and orderdetails_id:
+        orderdetails=OrderDetails.objects.get(id=orderdetails_id)
+        orderdetails.quantity +=1
+        orderdetails.save()
+    return redirect('cart')
+
+# decrease the quantity function
+def minus_quantity(request,orderdetails_id):
+    if request.user.is_authenticated and not request.user.is_anonymous and orderdetails_id:
+        orderdetails=OrderDetails.objects.get(id=orderdetails_id)
+        if orderdetails.quantity > 1:
+            orderdetails.quantity -=1
+            orderdetails.save()
+    return redirect('cart')
+

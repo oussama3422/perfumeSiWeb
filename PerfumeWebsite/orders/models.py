@@ -24,8 +24,11 @@ class OrderDetails(models.Model):
 
     def __str__(self):
         return 'User: ' + self.order.user.username+ ', Product : '+ self.product.name+'Order id :' + str(self.order.id)
-
-
+     
+     
+    #  this class put the from new to old products
+    class Meta:
+        ordering=['-id']
 
 
 

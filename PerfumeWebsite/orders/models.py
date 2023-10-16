@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from products.models import Product
-
+from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
 
 
 class Order(models.Model):
@@ -29,6 +29,17 @@ class OrderDetails(models.Model):
     #  this class put the from new to old products
     class Meta:
         ordering=['-id']
+
+
+class Payement(models.Model):
+    order=models.ForeignKey(Order,on_delete=models.CASCADE)
+    shipment_address=models.CharField(max_length=150)
+    shipment_phone=models.CharField(max_length=50)
+    card_number=CardNumberField()
+    expiry=CardExpiryField()
+    security_code=SecurityCodeField()
+    
+    
 
 
 

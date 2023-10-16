@@ -71,7 +71,7 @@ footer{
 .fixedImg3{
    background-image: url(images/perfume2.jpg);    
 }
-/* .navbar-brand,.navbar{
+.navbar-brand,.navbar{
     transition: 0.5s;
 }
 .navbar-brand:hover{
@@ -79,4 +79,13 @@ footer{
 }
 .navbar li:hover{
     padding-left: 10px;
-} */
+}
+
+.my-num {
+
+    font-weight: bold;
+    color: lightblue;
+    border: 1px solid lightblue;
+    padding: 2px 10px;
+    border-radius: 50px;
+}

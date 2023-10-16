@@ -20,7 +20,12 @@ def  add_to_cart(request):
         if order:
             # old order
             old_order=Order.objects.get(user=request.user,is_finished=False)
-            orderdetails=OrderDetails.objects.create(product=pro,price=pro.price,quantity=qty,order=old_order)
+            if OrderDetails.objects.filter(order=old_order,product=pro).exists():
+                orderdetails = OrderDetails.objects.get(order=old_order,product=pro)
+                orderdetails.quantity +=int(qty)
+                orderdetails.save()
+            else:
+                orderdetails=OrderDetails.objects.create(product=pro,price=pro.price,quantity=qty,order=old_order)
             messages.success(request,'Was added to cart for old order')
         else:
             # new order
@@ -31,10 +36,13 @@ def  add_to_cart(request):
             new_order.save()
             orderdetails = OrderDetails.objects.create(product=pro,price=pro.price,quantity=qty,order=new_order)
             # messages.success(request,'Was added to cart for new order')
-
         return redirect('/products/'+request.GET['pro_id'])
     else:
-        return redirect('products')
+        if 'pro_id' in request.GET:
+            messages.error(request,'you must be logged in , if you want to add to cart.')
+            return redirect('/products/'+request.GET['pro_id'])
+        else:
+            return redirect('index')
 
 
 def order(request):
@@ -73,16 +81,22 @@ def remove_from_card(request,orderdetails_id):
 def add_quantity(request,orderdetails_id):
     if request.user.is_authenticated and not request.user.is_anonymous and orderdetails_id:
         orderdetails=OrderDetails.objects.get(id=orderdetails_id)
-        orderdetails.quantity +=1
-        orderdetails.save()
+        if orderdetails.order.user.id == request.user.id:
+            orderdetails.quantity +=1
+            orderdetails.save()
     return redirect('cart')
 
 # decrease the quantity function
 def minus_quantity(request,orderdetails_id):
     if request.user.is_authenticated and not request.user.is_anonymous and orderdetails_id:
         orderdetails=OrderDetails.objects.get(id=orderdetails_id)
-        if orderdetails.quantity > 1:
-            orderdetails.quantity -=1
-            orderdetails.save()
+        if orderdetails.order.user.id == request.user.id:
+            if orderdetails.quantity > 1:
+                orderdetails.quantity -=1
+                orderdetails.save()
     return redirect('cart')
 
+# payment method
+
+def payment(request):
+    return render(request,'orders/payment.html')

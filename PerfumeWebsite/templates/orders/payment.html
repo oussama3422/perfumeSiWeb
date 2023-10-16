@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+
+{%block title%}Payment{%endblock%}
+
+{% block content %}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        {%if not request.user.is_authenticated and request.user.is_anonymous%}
+        <h5 class="alert alert-warning">
+            you must be logged in <a href="{% url 'signin' %}" class="text-dark">Singin</a>
+        </h5>
+        {%else%}
+        <div class="col-md-6">
+
+            <h2 class="mb-4 text-light">Payment Information</h2>
+
+            <form>
+                <div class="form-group">
+                    <label for="cardNumber" class="text-light">Card Number</label>
+                    <input type="text" class="form-control" id="cardNumber" placeholder="Card Number">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="expirationDate" class="text-light">Expiration Date</label>
+                        <input type="text" class="form-control" id="expirationDate" placeholder="MM/YY">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="cvv" class="text-light">CVV</label>
+                        <input type="text" class="form-control" id="cvv" placeholder="CVV">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nameOnCard" class="text-light">Name on Card</label>
+                    <input type="text" class="form-control" id="nameOnCard" placeholder="Name on Card">
+                </div>
+                <button type="submit" class="btn btn-warning">Submit Payment</button>
+            </form>
+        </div>
+        {%endif%}
+    </div>
+</div>
+
+{% endblock %}

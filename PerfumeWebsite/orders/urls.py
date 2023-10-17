@@ -13,4 +13,5 @@ urlpatterns=[
     path('add_qty<int:orderdetails_id>',views.add_quantity,name='add_qty'),
     path('minus_qty<int:orderdetails_id>',views.minus_quantity,name='minus_qty'),
     path('payment',views.payment,name='payment'),
+    path('show_orders',views.show_orders,name='show_orders'),
 ]

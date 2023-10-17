@@ -17,23 +17,49 @@
 
 <div class="container  p-5 my-5  border rounded border-warning">
     {%include 'partials/_alerts.html'%}
-    <h2 class="text-center">Cart</h2>
+    <h2 class="text-center">Orders</h2>
     <hr>
     {% if not request.user.is_authenticated and request.user.is_anonymous %}
     <h5 class="alert alert-warning">
         you must be logged in <a href="{% url 'signin' %}" class="text-dark">Singin</a>
     </h5>
-    {% elif order %}
-    {% else %}
-    <h4 class="alert alert-warning">No Orders here <a href="{% url 'products' %}" class="text-dark">All products</a>
-    </h4>
+    {% elif all_orders %}
+    {% if all_orders > 0 %} 
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Order Name</th>
+                <th scope="col">Date & Time</th>
+                <th scope="col">Items Count</th>
+                <th scope="col">Total</th>
+                <th scope="col">is finished</th>
+            </tr>
+        {%endif%}
+        {%for order in all_orders%}
+        {{order}}
+        <hr>
+        {%endfor%}
+        {% if all_orders > 0  %} 
+    </thead>
+         </table>
+        {%endif%} 
+        
+        
+        
+        {% else %} <h5 class="alert alert-warning">
+            No Orders here
+            <a href="{% url 'products' %}" class="text-dark">
+                All products
+            </a>
+            </h5>
 
-    <!-- <h5 class="h2 alert alert-warning">No orders exists </h5> -->
-    {%endif%}
+            <!-- <h5 class="h2 alert alert-warning">No orders exists </h5> -->
+            {%endif%}
 
-    <hr>
-    <div />
+            <hr>
+            <div />
 
 
 
-    {% endblock %}
+            {% endblock %}

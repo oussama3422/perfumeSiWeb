@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from products.models import Product
 from creditcards.models import CardNumberField, CardExpiryField, SecurityCodeField
 
-
 class Order(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     order_date=models.DateTimeField()

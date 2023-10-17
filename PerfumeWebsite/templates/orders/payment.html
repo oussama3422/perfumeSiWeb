@@ -30,39 +30,49 @@
             </h4>
             {%else%}
             {% if is_added == True%}
-            <form method="post" style="display: none;">
-                {% else %}
-                <form method="post">
-                    {% endif %}
+            <form method="POST" style="display: none;">
+            {% else %}
+                <form method="POST">
+            {% endif %}
                     {% csrf_token %}
+                    <label for="orderNum" class="text-light">Order Number :</label> <span id="orderNum"
+                        class="my-num text-light">{{order.id}}</span>
                     <br>
-                    <label for="orderNum" class="text-light">Order Number :</label>  <span id="orderNum" class="my-num text-light">{{order.id}}</span>
+                    <label for="productCount" class="text-light">Product Count : </label><span id="productCount"
+                        class="my-num text-light">{{orderdetails.count}} </span>
                     <br>
-                   <label for="productCount" class="text-light">Product Count : </label><span id="productCount" class="my-num text-light">{{orderdetails.count}} </span>
-                    <br>
-                   <label for="totalAmount" class="text-light">Total Amount : </label> <span id="totalAmount" class="my-num text-light">{{total}}$</span>
+                    <label for="totalAmount" class="text-light">Total Amount : </label> <span id="totalAmount"
+                        class="my-num text-light">{{total}}$</span>
                     <br>
                     <a href="{% url 'cart' %}" class="btn btn-outline-info mt-1 mb-5">Cart details</a>
                     <br>
                     <div class="form-group">
+                        <label for="ship_address" class="text-light">Ship Address</label>
+                        <input type="text" class="form-control" id="ship_address" name="ship_address" value="{{ship_address}}"
+                            placeholder="marrakech,mhamid.">
+                    </div>
+                    <div class="form-group">
+                        <label for="ship_phone" class="text-light">Ship Phone</label>
+                        <input type="tel" class="form-control" id="ship_phone" name="ship_phone" value="{{ship_phone}}"
+                            placeholder="0542424355">
+                    </div>
+                    <div class="form-group">
                         <label for="cardNumber" class="text-light">Card Number</label>
-                        <input type="text" class="form-control" id="cardNumber" placeholder="Card Number">
+                        <input type="text" class="form-control" id="cardNumber" value="{{card_number}}" name="card_number"
+                            placeholder="1111222233334444">
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="expirationDate" class="text-light">Expiration Date</label>
-                            <input type="text" class="form-control" id="expirationDate" placeholder="MM/YY">
+                            <input type="text" name="expiry" value="{{expiry}}" class="form-control" id="expirationDate"
+                                placeholder="MM/YY.ex:12/23">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="cvv" class="text-light">CVV</label>
-                            <input type="text" class="form-control" id="cvv" placeholder="CVV">
+                            <input type="text" name="security_code" value="{{security_code}}" class="form-control" id="cvv" placeholder="CVV.ex:123" required>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="nameOnCard" class="text-light">Name on Card</label>
-                        <input type="text" class="form-control" id="nameOnCard" placeholder="Name on Card">
-                    </div>
-                    <button type="submit" class="btn btn-warning">Submit Payment</button>
+                    <button type="submit" class="btn btn-warning" name="submitPayment">Submit Payment</button>
                 </form>
         </div>
         {%endif%}

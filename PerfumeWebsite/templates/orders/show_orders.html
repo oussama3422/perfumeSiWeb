@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} My Orders {% endblock %}
+
+{% block content %}
+
+<style>
+    .my-num {
+
+        font-weight: bold;
+        color: lightblue;
+        border: 1px solid lightblue;
+        padding: 2px 10px;
+        border-radius: 50px;
+    }
+</style>
+
+<div class="container  p-5 my-5  border rounded border-warning">
+    {%include 'partials/_alerts.html'%}
+    <h2 class="text-center">Cart</h2>
+    <hr>
+    {% if not request.user.is_authenticated and request.user.is_anonymous %}
+    <h5 class="alert alert-warning">
+        you must be logged in <a href="{% url 'signin' %}" class="text-dark">Singin</a>
+    </h5>
+    {% elif order %}
+    {% else %}
+    <h4 class="alert alert-warning">No Orders here <a href="{% url 'products' %}" class="text-dark">All products</a>
+    </h4>
+
+    <!-- <h5 class="h2 alert alert-warning">No orders exists </h5> -->
+    {%endif%}
+
+    <hr>
+    <div />
+
+
+
+    {% endblock %}

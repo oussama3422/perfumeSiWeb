@@ -4,7 +4,7 @@ from products.models import Product
 from orders.models import Order
 from orders.models import OrderDetails
 from django.utils import timezone
-
+from .models import Payement
 
 
 
@@ -99,18 +99,58 @@ def minus_quantity(request,orderdetails_id):
 # payment method
 
 def payment(request):
+    
+    print(request.POST)
     context=None
-    if request.user.is_authenticated and not request.user.is_anonymous:
-        if Order.objects.all().filter(user=request.user,is_finished=False):
-            order=Order.objects.get(user=request.user,is_finished=False)
-            orderdetails=OrderDetails.objects.all().filter(order=order)
-            total=0
-            for sub in orderdetails:
-                total +=sub.price * sub.quantity
-            
-            context={
+    shipAddress=None
+    shipPhone=None
+    cardNumber=None
+    Expiry=None
+    securityCode=None
+    is_added=None
+    if request.method =='POST' and 'submitPayment' in request.POST and 'ship_address' in request.POST  and 'ship_phone' in request.POST and 'card_number' in request.POST and 'expiry' in request.POST and 'security_code' in request.POST:
+        # after payment
+        print('::::::::::::::::::::::::::::::::::>begin:::::>')
+        shipAddress=request.POST['ship_address']
+        print(shipAddress)
+        shipPhone=request.POST['ship_phone']
+        print(shipPhone)
+        cardNumber=request.POST['card_number']
+        print(cardNumber)
+        Expiry=request.POST['expiry']
+        print(Expiry)
+        securityCode=request.POST['security_code']
+        if request.user.is_authenticated and not request.user.is_anonymous:
+            if Order.objects.all().filter(user=request.user,is_finished=False):
+                order=Order.objects.get(user=request.user,is_finished=False)
+                payment=Payement(order=order,shipment_address=shipAddress,shipment_phone=shipPhone,card_number=cardNumber,expiry=Expiry,security_code=securityCode,)
+                payment.save()
+                order.is_finished=True
+                order.save()
+                is_added=True
+                messages.success(request,'Your order is done.')
+        context={
+            'ship_address':shipAddress,
+            'ship_phone':shipPhone,
+            'card_number':cardNumber,
+            'expiry':Expiry,
+            'security_code':securityCode,
+            'is_added':is_added,
+            }
+        print(context)
+    else:
+        # before payment
+        if request.user.is_authenticated and not request.user.is_anonymous:
+            if Order.objects.all().filter(user=request.user,is_finished=False):
+                order=Order.objects.get(user=request.user,is_finished=False)
+                orderdetails=OrderDetails.objects.all().filter(order=order)
+                total=0
+                for sub in orderdetails:
+                    total +=sub.price * sub.quantity
+                context={
                 'order':order,
                 'orderdetails':orderdetails,
                 'total':total,
                 }
+    print(context)
     return render(request,'orders/payment.html',context)
